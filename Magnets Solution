@@ -1,0 +1,41 @@
+#plus position 10
+#minus position 01
+size = int(input())
+counter = 0
+magnets = list()
+while counter < size:
+    magnet = input()
+    magnets.append(magnet)
+    counter += 1
+groups = 0
+positive = False
+negative = False
+for x in magnets:
+    if len(magnets) == 1:
+        groups += 1
+        break
+    if positive is True:
+        negative = False
+        if x == '10':
+            continue
+        else:
+            groups += 1
+            negative = True
+            positive = False
+            continue
+    elif negative is True:
+        positive = False
+        if x == '01':
+            continue
+        else:
+            positive = True
+            negative = False
+            groups += 1
+            continue
+    else:
+        groups += 1
+    if x == '10':
+        positive = True
+    elif x == '01':
+        negative = True
+print(groups)
